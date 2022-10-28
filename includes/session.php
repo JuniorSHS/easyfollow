@@ -18,6 +18,6 @@ if (isset($_GET['logout']))
 {
     session_destroy();
     unset($_SESSION['email']); // relance la session pour l'utilisateur courant et détruit toutes les données associées à cette session
-    header("Location: Login.php"); // Raw HTTP header; redirige vers la page de connexion
+    header("Location: login.php"); // Raw HTTP header; redirige vers la page de connexion
 }
 ?>

@@ -168,7 +168,9 @@
 		$row = $stmt->fetch(PDO::FETCH_ASSOC); // obtenir le resultat sous forme de tableau associatif
 		$nom = $row['nom'];
 		$prenom = $row['prenom'];
-		$genre = $row['genre'];
+		//si l'utilisateur à choisi 1, c'est un homme, si il a choisi 2, c'est une femme
+		if ($row['genre'] == 1) { $genre = "Homme"; }
+		else if ($row['genre'] == 2) { $genre = "Femme"; }
 		$email = $row['email'];
 	}
 
