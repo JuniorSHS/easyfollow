@@ -93,8 +93,6 @@
 
 
 
-
-
 	// ****************************LOGIN****************************
 	// Quand l'utilisateur clique sur le bouton "se connecter"
 	if (isset($_POST['login']))
@@ -173,5 +171,7 @@
 		else if ($row['genre'] == 2) { $genre = "Femme"; }
 		$email = $row['email'];
 	}
+
+
 
 ?>

@@ -183,3 +183,115 @@ _______________________________________________________________________________
                 </div>
             </div>
             <!-- Recent Sales End -->
+
+
+
+
+
+
+
+            <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Date de début de la mission:</label>
+                        <input type="date" class="form-control" id="message-text" name="date_debut_mission">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Date de fin de la mission:</label>
+                        <input type="date" class="form-control" id="message-text" name="date_fin_mission">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Heure de début de la mission:</label>
+                        <input type="time" class="form-control" id="message-text" name="heure_debut_mission">
+                    </div>
+                </div>
+                <div class="col-md-4 ms-auto">
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Heure de fin de la mission:</label>
+                        <input type="time" class="form-control" id="message-text" name="heure_fin_mission">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Heure de pause:</label>
+                        <input type="time" class="form-control" id="message-text" name="heure_pause_mission">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Montant de la rémunération:</label>
+                        <input type="number" class="form-control" id="message-text" name="montant_remuneration">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Statut de la mission:</label>
+                        <select class="form-select" aria-label="Default select example" name="statut_mission">
+                            <option selected>- - Choisir un statut - -</option>
+                            <option value="En cours">En cours</option>
+                            <option value="Terminée">Terminée</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com">
+                                    <label for="floatingInputGrid">Email address</label>
+                                </div>
+                            </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <label for="floatingSelectGrid">Works with selects</label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    SELECT `id`, `users_id`, `nom_mission`, `date_debut`, `date_fin`, `duree`, `entreprise`, `ville`, `desc_mission`, `heure_debut`, 
+                    `heure_fin`, `total_heures`, `type`, `montant`, `pause`, `statut`, `date_creation` FROM `missions` WHERE 1

@@ -62,7 +62,7 @@ table th {
   }
   
   table td::before {
-    
+
     content: attr(data-label);
     float: left !important;
     font-weight: bold !important;

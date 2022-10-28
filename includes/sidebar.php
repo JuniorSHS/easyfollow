@@ -26,7 +26,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="mission.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="mission.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mes missions</a>
                         </div>
                     </div>
                 </div>
