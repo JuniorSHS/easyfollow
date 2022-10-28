@@ -1,0 +1,185 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>User Login</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
+		<div class="header">
+			<h2>Login</h2>
+		</div>
+		
+		<form method="post" action="login.php">
+			<?php include('errors.php'); ?>
+			<div class="input-group">
+				<label>Username</label>
+				<input type="text" name="username">
+			</div>
+			<div class="input-group">
+				<label>Password</label>
+				<input type="password" name="password">
+			</div>
+			
+			<div class="input-group">
+				<button type="submit" name="login" class="btn">Login</button>
+			</div>
+		
+			<p>
+				Not a member? <a href="register.php">Sign up</a>
+			</p>
+		</form>
+	</body>
+</html> -->
+
+
+value="<?php echo $username; ?>
+
+
+
+
+
+
+
+
+_______________________________________________________________________________
+
+<?php 
+	/************** SI TOUT VA BIEN **************/ 
+
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+	// si le nom d'utilisateur de la session en cours n'est pas défini pour une raison quelconque, une fois la session démarrée
+	if (!isset($_SESSION['username'])) 
+	{
+		$_SESSION['msg'] = "You must log in first";
+		header('Location: login.php'); // Raw HTTP header; redirige vers la page de connexion
+	}
+
+	// fermer la session si l'utilisateur clique sur le bouton "logout"
+	if (isset($_GET['logout'])) 
+	{
+		session_destroy();
+		unset($_SESSION['username']); // relance la session pour l'utilisateur courant et détruit toutes les données associées à cette session
+		header("Location: Login.php"); // Raw HTTP header; redirige vers la page de connexion
+	}
+?>
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
+		<div class="header">
+			<h2>Home Page</h2>
+		</div>
+		<div class="content">
+
+			<!-- notification message once successful -->
+			<!-- if statement ternary operator for embedded php -->
+			<?php if (isset($_SESSION['success'])) : ?>
+			  <!-- for css -->
+			  <div class="success">
+				<h3>
+				  <?php 
+					echo $_SESSION['success']; 
+					unset($_SESSION['success']);
+				  ?>
+				</h3>
+			  </div>
+			<?php endif; ?>
+
+			<!-- logged in user information: "Welcome [insert username here] -->
+			<?php  if (isset($_SESSION['username'])) : ?>
+				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+				<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+			<?php endif; ?>
+		</div>
+		
+</body>
+</html>
+
+
+_______________________________________________________________________________
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Recent Salse</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
