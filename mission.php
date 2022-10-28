@@ -18,7 +18,7 @@
         <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ajouter une mission</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btnX" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                 </div>
 
                 <div class="modal-body">
@@ -27,7 +27,7 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
+                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
                                     <label for="floatingInputGrid">Nom de la mission</label>
                                 </div>
                             </div>
@@ -52,13 +52,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
                                 <label for="floatingInputGrid">Date de début de mission</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
                                 <label for="floatingInputGrid">Date de fin de mission</label>
                             </div>
                         </div>
@@ -66,13 +66,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
                                 <label for="floatingInputGrid">Nom de l'entreprise</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
                                 <label for="floatingInputGrid">Ville</label>
                             </div>
                         </div>
@@ -92,12 +92,32 @@
                                     <option value="2">Terminé</option>
                                     <option value="3">Abandonné</option>
                                 </select>
-                                <label for="floatingSelectGrid">Status</label>
+                                <label for="floatingSelectGrid">Statut</label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="time" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <label for="floatingInputGrid">Heure de début</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="time" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <label for="floatingInputGrid">Heure de fin</label>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="">
+                                <label for="floatingInputGrid">Revenu de fin de mission (0 si bénévolat)</label>
                             </div>
                         </div>
                     </div>
-
-
                         <br><br>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
