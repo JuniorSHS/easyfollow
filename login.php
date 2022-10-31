@@ -18,7 +18,7 @@
 		<div class="row g-4">
 			<div class="col-md-4 offset-md-4 form-div login">
 			<div class="bg-secondary rounded h-100 p-4">
-				<form action="login.php" method="post">
+				<form action="login.php" method="POST">
 					<h3 class="text-center">CONNEXION</h3>
 
 					<?php if(count($errors) > 0): ?>

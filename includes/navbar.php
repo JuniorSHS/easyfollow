@@ -7,7 +7,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                    <input class="form-control bg-dark border-0" type="search" placeholder="Recherche...">
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
@@ -79,9 +79,9 @@
                             <span class="d-none d-lg-inline-flex"><?php echo $nom = $row['prenom']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="logout.php" name="logout" class="dropdown-item">Logout</a>
+                            <a href="#" class="dropdown-item"><center>Mon profil</center></a>
+                            <a href="#" class="dropdown-item"><center>paramètre</center></a>
+                            <a href="logout.php" name="logout" class="dropdown-item"><center>Déconnexion</center></a>
                         </div>
                     </div>
                 </div>

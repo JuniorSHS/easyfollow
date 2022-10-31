@@ -49,10 +49,10 @@
 						</div>
 						<div class="mb-3">
 						<label for="exampleInputPassword1" class="form-label">Genre</label>
-						<select class="form-select" aria-label="Default select example">
-						<option selected>- -</option>
-						<option value="1">Homme</option>
-						<option value="2">Femme</option>
+						<select name="genre" class="form-select" aria-label="Default select example">
+						<option value="">- -</option>
+						<option value="Monsieur">Homme</option>
+						<option value="Madame">Femme</option>
 						</select>
 						</div>
 						<div class="mb-3">

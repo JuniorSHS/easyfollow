@@ -10,14 +10,12 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <span>
-                            <?php if ($row['genre'] == 1) { echo "Monsieur"; } else if ($row['genre'] == 2) { echo "Madame"; } ?>
-                        </span>
+                        <span><?php echo $nom = $row['genre']; ?></span>
                         <h6 class="mb-0"><?php echo $nom = $row['prenom']; ?> <?php echo $nom = $row['nom']; ?></h6>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Statistiques</a>
+                    <a href="index.php" class="nav-item nav-link <?php if ($page == 'index' ) { echo 'active'; } ?>"><i class="fa fa-tachometer-alt me-2"></i>Statistiques</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -26,7 +24,9 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="mission.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mes missions</a>
+                    <!-- Si l'utilisateur est sur le lien mission.php on ajoute la classe active -->
+                    <a href="mission.php" class="nav-item nav-link <?php if ($page == 'mission' ) { echo 'active'; } ?>"><i class="fa fa-tasks me-2"></i>Missions</a>
+
                         </div>
                     </div>
                 </div>

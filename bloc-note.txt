@@ -1,297 +1,183 @@
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>User Login</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	
-	<body>
-		<div class="header">
-			<h2>Login</h2>
-		</div>
-		
-		<form method="post" action="login.php">
-			<?php include('errors.php'); ?>
-			<div class="input-group">
-				<label>Username</label>
-				<input type="text" name="username">
-			</div>
-			<div class="input-group">
-				<label>Password</label>
-				<input type="password" name="password">
-			</div>
-			
-			<div class="input-group">
-				<button type="submit" name="login" class="btn">Login</button>
-			</div>
-		
-			<p>
-				Not a member? <a href="register.php">Sign up</a>
-			</p>
-		</form>
-	</body>
-</html> -->
+
+<h5 class="card-title"><?php echo $row['nom_mission']; ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['entreprise']; ?></h6>
+                    <p class="card-text"><?php echo $row['desc_mission']; ?></p>
+                    <p class="card-text"><?php echo $row['date_debut']; ?></p>
+                    <p class="card-text"><?php echo $row['date_fin']; ?></p>
+                    <p class="card-text"><?php echo $row['ville']; ?></p>
+                    <p class="card-text"><?php echo $row['heure_debut']; ?></p>
+                    <p class="card-text"><?php echo $row['heure_fin']; ?></p>
+                    <p class="card-text"><?php echo $row['montant']; ?></p>
+                    <p class="card-text"><?php echo $row['statut']; ?></p>
+                    <a href="edit_mission.php?id=<?php echo $row['id_mission']; ?>" class="btn btn-primary">Modifier</a>
+                    <a href="delete_mission.php?id=<?php echo $row['id_mission']; ?>" class="btn btn-danger">Supprimer</a>
 
 
-value="<?php echo $username; ?>
+                    $query = "SELECT * FROM missions INNER JOIN users ON missions.users_id = users.id WHERE users_id = :id";
+		$stmt = $db->prepare($query);
+		$stmt->execute(['id' => $id]);
+		$missions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		// on affiche les informations des deux tables dans la page mission
+		foreach ($missions as $mission) {
+			echo $mission['nom_mission'];
+			echo $mission['date_debut'];
+			echo $mission['date_fin'];
+			echo $mission['entreprise'];
+			echo $mission['ville'];
+			echo $mission['desc_mission'];
+			echo $mission['heure_debut'];
+			echo $mission['heure_fin'];
+			echo $mission['type'];
+			echo $mission['montant'];
+			echo $mission['statut'];
+			echo $mission['date_creation'];
+			echo $mission['nom'];
+			echo $mission['prenom'];
+		}
+
+
+        <?php
+                                $mysqli = new mysqli('localhost', 'root', '', 'easyfollow') or die(mysqli_error($mysqli));
+                                $result = $mysqli->query("SELECT * FROM missions INNER JOIN users ON missions.users_id = users.id") or die($mysqli->error);
+                                //pre_r($result);
+                                while($row = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td data-label="Nom mission"><?php echo $row['nom_mission']; ?></td>
+                                <td data-label="Date de début"><?php echo $row['date_debut']; ?></td>
+                                <td data-label="Date de fin"><?php echo $row['date_fin']; ?></td>
+                                <td data-label="Statut"><?php echo $row['statut']; ?></td>
+                                <td data-label="Revenu (€)"><?php echo $row['montant']; ?> €</td>
+                                <td data-label="Action">
+                                    <a href="" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                    <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                                    </tr>
+                            <?php endwhile; ?>
+
+                            <!-- version SQL PDO -->
+                            <?php
+                                foreach($result as $row) {
+                                    echo "<tr>";
+                                    echo "<td data-label='Nom mission' class='table-success'>" . $row['nom_mission'] . "</td>";
+                                    echo "<td data-label='Date de début' class='table-success'>" . $row['date_debut'] . "</td>";
+                                    echo "<td data-label='Date de fin' class='table-success'>" . $row['date_fin'] . "</td>";
+                                    echo "<td data-label='Statut' class='table-success'>" . $row['statut'] . "</td>";
+                                    echo "<td data-label='Revenu (€)' class='table-success'>" . $row['montant'] . " €</td>";
+                                    echo "<td data-label='Action' class='table-success'>";
+                                    echo "<a href='' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
+
+                                    echo " <a href='' class='btn btn-danger'><i class='fa fa-trash'> </i></a>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                            ?>
 
 
 
 
+                        <tbody>
+                            
+                        </tbody>
 
 
+                        <?php
+            foreach($result as $row) {
+                    echo "<tr>";
+                    echo "<td data-label='Nom mission'>" . $row['nom_mission'] . "</td>";
+                    echo "<td data-label='Date début'>" . date('d/m/Y', strtotime($row['date_debut'])) . "</td>";
+                    echo "<td data-label='Date fin'>" . date('d/m/Y', strtotime($row['date_fin'])) . "</td>";
+                    if($row['statut'] == "En cours") {
+                        echo "<td data-label='Statut' class='table-warning'>" . $row['statut'] . "</td>";
+                    } else if($row['statut'] == "Terminé") {
+                        echo "<td data-label='Statut' class='table-success'>" . $row['statut'] . "</td>";
+                    } else if($row['statut'] == "Abandonné") {
+                        echo "<td data-label='Statut' class='table-danger'>" . $row['statut'] . "</td>";
+                    }
+                    echo "<td data-label='Rémuneration (€)'>" . $row['montant'] . " €</td>";
+                    echo "<td data-label='Action'>";
+                    echo "<a href='' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
+                    echo " <button type='button' name='del' class='btn btn-danger'><i class='fa fa-trash'> </i></button>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+            ?>
 
+_______________________________________________________________________________________________________________
 
-_______________________________________________________________________________
+// si il n'y a pas d'erreur, ajouter la mission dans la base de données avec un message de succès et rediriger vers la page mission
+		if (count($errors) == 0) // 
+		{
+			$query = "INSERT INTO missions (nom_mission, 
+			date_debut, 
+			date_fin, 
+			entreprise, 
+			ville, 
+			desc_mission, 
+			heure_debut, 
+			heure_fin, 
+			type, 
+			montant, 
+			statut, 
+			date_creation, 
+			users_id) 
+					  VALUES(:nom_mission, 
+					  :date_debut, 
+					  :date_fin, 
+					  :entreprise, 
+					  :ville, 
+					  :desc_mission, 
+					  :heure_debut, 
+					  :heure_fin, 
+					  :type, 
+					  :montant, 
+					  :statut, 
+					  :date_creation, 
+					  :id)";
+			$stmt = $db->prepare($query);
+			$stmt->execute([
+				'nom_mission' => $nom_mission, 
+				'date_debut' => $date_debut, 
+				'date_fin' => $date_fin, 
+				'entreprise' => $entreprise, 
+				'ville' => $ville, 
+				'desc_mission' => $desc_mission, 
+				'heure_debut' => $heure_debut, 
+				'heure_fin' => $heure_fin, 
+				'type' => $type, 
+				'montant' => $montant, 
+				'statut' => $statut, 
+				'date_creation' => $date_creation, 
+				'id' => $users_id
+			]);
 
-<?php 
-	/************** SI TOUT VA BIEN **************/ 
-
-	if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-
-	// si le nom d'utilisateur de la session en cours n'est pas défini pour une raison quelconque, une fois la session démarrée
-	if (!isset($_SESSION['username'])) 
-	{
-		$_SESSION['msg'] = "You must log in first";
-		header('Location: login.php'); // Raw HTTP header; redirige vers la page de connexion
+			redirect('mission.php', 'La mission a été ajoutée avec succès'); 
+		}
 	}
 
-	// fermer la session si l'utilisateur clique sur le bouton "logout"
-	if (isset($_GET['logout'])) 
-	{
-		session_destroy();
-		unset($_SESSION['username']); // relance la session pour l'utilisateur courant et détruit toutes les données associées à cette session
-		header("Location: Login.php"); // Raw HTTP header; redirige vers la page de connexion
-	}
-?>
 
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Home</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	
-	<body>
-		<div class="header">
-			<h2>Home Page</h2>
-		</div>
-		<div class="content">
-
-			<!-- notification message once successful -->
-			<!-- if statement ternary operator for embedded php -->
-			<?php if (isset($_SESSION['success'])) : ?>
-			  <!-- for css -->
-			  <div class="success">
-				<h3>
-				  <?php 
-					echo $_SESSION['success']; 
-					unset($_SESSION['success']);
-				  ?>
-				</h3>
-			  </div>
-			<?php endif; ?>
-
-			<!-- logged in user information: "Welcome [insert username here] -->
-			<?php  if (isset($_SESSION['username'])) : ?>
-				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-				<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-			<?php endif; ?>
-		</div>
-		
-</body>
-</html>
-
-
-_______________________________________________________________________________
-
-            <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Recent Sales End -->
-
-
-
-
-
-
-
-            <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Date de début de la mission:</label>
-                        <input type="date" class="form-control" id="message-text" name="date_debut_mission">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Date de fin de la mission:</label>
-                        <input type="date" class="form-control" id="message-text" name="date_fin_mission">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Heure de début de la mission:</label>
-                        <input type="time" class="form-control" id="message-text" name="heure_debut_mission">
-                    </div>
-                </div>
-                <div class="col-md-4 ms-auto">
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Heure de fin de la mission:</label>
-                        <input type="time" class="form-control" id="message-text" name="heure_fin_mission">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Heure de pause:</label>
-                        <input type="time" class="form-control" id="message-text" name="heure_pause_mission">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Montant de la rémunération:</label>
-                        <input type="number" class="form-control" id="message-text" name="montant_remuneration">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Statut de la mission:</label>
-                        <select class="form-select" aria-label="Default select example" name="statut_mission">
-                            <option selected>- - Choisir un statut - -</option>
-                            <option value="En cours">En cours</option>
-                            <option value="Terminée">Terminée</option>
-                        </select>
-                    </div>
-
-
-
-
-                    <div class="row g-2">
-                            <div class="col-md">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com">
-                                    <label for="floatingInputGrid">Email address</label>
-                                </div>
-                            </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <label for="floatingSelectGrid">Works with selects</label>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="mdo@example.com" value="mdo@example.com">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="é" value="é">
-                                <label for="floatingInputGrid">Email address</label>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    SELECT `id`, `users_id`, `nom_mission`, `date_debut`, `date_fin`, `duree`, `entreprise`, `ville`, `desc_mission`, `heure_debut`, 
-                    `heure_fin`, `total_heures`, `type`, `montant`, `pause`, `statut`, `date_creation` FROM `missions` WHERE 1
+        $pdo = new PDO('mysql:host=localhost;dbname=easyfollow', 'root', '');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    	$sql = "SELECT * FROM missions INNER JOIN users ON missions.users_id = users.id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach($result as $row) {
+			$nom_mission = $row['nom_mission'];
+			$date_debut = $row['date_debut'];
+			$date_fin = $row['date_fin'];
+			$entreprise = $row['entreprise'];
+			$ville = $row['ville'];
+			$desc_mission = $row['desc_mission'];
+			$heure_debut = $row['heure_debut'];
+			$heure_fin = $row['heure_fin'];
+			$type = $row['type'];
+			$montant = $row['montant'];
+			$statut = $row['statut'];
+			$date_creation = $row['date_creation'];
+			$nom = $row['nom'];
+			$prenom = $row['prenom'];
+			$genre = $row['genre'];
+			$email = $row['email'];
+		}
